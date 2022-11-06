@@ -1,0 +1,39 @@
+type User {
+  userId: ID!
+  username: String
+  password: String
+  name: String
+}
+
+type UserResult {
+  message: String
+  data: [UserData]
+}
+
+type UserData {
+  userId: ID
+  name: String
+  username: String
+}
+
+type SignUpResult {
+  message: String
+  data: UserData
+}
+
+type SignInResult {
+  message: String
+  data: SignInData
+}
+type SignInData {
+  username: String
+  accessToken: String
+}
+
+type Query {
+  user(userId: ID, username: String): UserResult
+  signIn(username: String, password: String): SignInResult
+}
+type Mutation {
+  signUp(username: String, password: String, name: String): SignUpResult
+}

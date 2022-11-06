@@ -1,0 +1,23 @@
+type Course {
+  courseId: ID!
+  name: String
+  teacher: String
+  price: Int
+}
+
+type CourseResult {
+  message: String
+  data: [Course]
+}
+
+type CreateCourseResult {
+  message: String
+  data: Course
+}
+
+type Query {
+  course(name: String): CourseResult
+}
+type Mutation {
+  createCourse(name: String, teacher: String, price: Int): CreateCourseResult
+}

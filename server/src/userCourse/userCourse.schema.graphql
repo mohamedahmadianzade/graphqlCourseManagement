@@ -1,0 +1,54 @@
+type AddCourseMemberResult {
+  message: String
+  data: AddCourseMemberData
+}
+type AddCourseMemberData {
+  userId: ID
+  courseId: ID
+}
+
+type RemoveCourseMemberResult {
+  message: String
+  data: RemoveCourseMemberData
+}
+type RemoveCourseMemberData {
+  userId: ID
+  courseId: ID
+}
+
+type CourseStatusResult {
+  message: String
+  data: [CourseStatusData]
+}
+
+type CourseStatusData {
+  courseId: ID
+  name: String
+  count: Int
+}
+
+type courseMemberResult {
+  message: String
+  data: [courseMemberData]
+}
+type courseMemberData {
+  name: String
+  userId: String
+}
+
+type UserCourseResult {
+  message: String
+  data: [UserCourseData]
+}
+type UserCourseData {
+  courseId: String
+  name: String
+  teacher: String
+}
+type Query {
+  addCourseMember(courseId: ID!, userId: ID!): AddCourseMemberResult
+  removeCourseMemeber(courseId: ID!, userId: ID!): RemoveCourseMemberResult
+  courseMembers(courseId: ID!): courseMemberResult
+  userCourses(userId: ID!): UserCourseResult
+  courseStatus: CourseStatusResult
+}
